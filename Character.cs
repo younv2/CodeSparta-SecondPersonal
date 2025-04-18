@@ -24,7 +24,7 @@ public class Character
     public ClassType Type { get { return type; } }
     public int AttackPower { get { return attackPower + EquipedItems.GetOptionValue(OptionType.ATTACK); } }
     public int Defense { get { return defense + EquipedItems.GetOptionValue(OptionType.DEFENSE); } }
-    public int HP { get { return hp; } }
+    public int HP { get { return hp;  } }
     public int MaxHp {  get { return maxHp; } }
     public int Gold { get { return gold; } }
 
@@ -54,6 +54,14 @@ public class Character
             inventory.AddItem(item);
             return true;
         }
+    }
+    public void AddGold(int gold)
+    {
+        this.gold += gold;
+    }
+    public void MinusHp(int minus)
+    {
+        hp = int.Clamp(hp-minus, 0, hp);
     }
     public bool SellItem(int num)
     {

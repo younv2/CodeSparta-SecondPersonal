@@ -7,7 +7,6 @@ public enum EquipmentType
 }
 public abstract class Item
 {
-    private string id;
     private string name;
     private string description;
     private OptionType type;
@@ -15,7 +14,6 @@ public abstract class Item
     private int buyPrice;
     private bool isSellShop;
 
-    public string Id { get { return id; } }
     public string Name { get { return name; } }
     public string Description { get { return description; } }
     public OptionType Type { get { return type; } }
@@ -29,7 +27,6 @@ public abstract class Item
     }
     public Item(Item item)
     {
-        id = item.Id;
         name = item.name;
         description = item.description;
         type = item.type;
@@ -39,7 +36,6 @@ public abstract class Item
     }
     public Item(string name, string description, OptionType type, int typeValue, int buyPrice, bool isSellShop)
     {
-        this.id = GenerateId();
         this.name = name;
         this.description = description;
         this.type = type;
@@ -62,11 +58,6 @@ public abstract class Item
             return "방어력";
         }
         return "";
-    }
-    private static string GenerateId()
-    {
-        // Guid 또는 해시 기반 생성 가능
-        return Guid.NewGuid().ToString("N"); // 32자리 고유 ID (하이픈 없음)
     }
 
 

@@ -14,7 +14,17 @@ public class DungeonScene : BaseScene
             Console.Clear();
             Console.Write(GetStringBuilding());
 
-            HandleMenu(menu);
+            HandleMenu(menu, (index) =>
+            {
+                try
+                {
+                    DataManager.Instance.DungeonData[index - 1].Join();
+                }
+                catch(Exception e)
+                {
+                    SendErrorMsg(Global.ErrorMsg.WRONG_MSG);
+                }
+            });
         }
     }
 
